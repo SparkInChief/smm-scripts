@@ -1,13 +1,14 @@
 $(document).ready(function () {
-    $(document).ajaxComplete(function (event, xhr, settings) {
-        if (settings.url.indexOf("/submissions/details_reviewform") != -1) {
-            enhanceReviewPanel();
-        }
-    });
-
+    if ($("#ReviewEntryForm").length) enhanceReviewPanel();
+})
+$(document).ajaxComplete(function (event, xhr, settings) {
+    if (settings.url.indexOf("/submissions/details_reviewform") != -1) {
+        enhanceReviewPanel();
+    }
 });
 
 function enhanceReviewPanel() {
+    if($("#ReviewEntryForm").hasClass("egj-enhanced")) return;
     $("#ReviewEntryForm").submit(function (e) {
         e.preventDefault()
     });
@@ -69,4 +70,5 @@ function enhanceReviewPanel() {
             })
         })
     });
+ $("#ReviewEntryForm").addClass("egj-enhanced");
 }
