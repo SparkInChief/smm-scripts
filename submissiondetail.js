@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    $("div.sbm-content-item.internal:contains(_egj_script)").hide().prev("hr").hide();
     if ($("#ReviewEntryForm").length) enhanceReviewPanel();
 })
 $(document).ajaxComplete(function (event, xhr, settings) {
