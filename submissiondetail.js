@@ -1,9 +1,9 @@
 $(document).ready(function () {
-    $("#review-form-panel").on('DOMSubtreeModified', function () { enhanceReviewPanel() });
     enhanceReviewPanel();
 });
 
 function enhanceReviewPanel() {
+    $("#review-form-panel").off('DOMSubtreeModified');
     $("#ReviewEntryForm").submit(function (e) {
         e.preventDefault()
     });
@@ -64,5 +64,8 @@ function enhanceReviewPanel() {
                 dataType: "json"
             })
         })
-    })
+    });
+    $("#review-form-panel").on('DOMSubtreeModified', function () {
+        enhanceReviewPanel()
+    });
 }
