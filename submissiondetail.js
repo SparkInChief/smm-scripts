@@ -1,20 +1,24 @@
 $(document).ready(function () {
-    $("#review-form-panel").load(enhanceReviewPanel);
+    $(document).ajaxComplete(function (event, xhr, settings) {
+        if (settings.url.indexOf("/submissions/details_reviewform") != -1) {
+            enhanceReviewPanel();
+        }
+    });
+
 });
 
 function enhanceReviewPanel() {
-    if (!$("#ReviewEntryForm").length) return;
     $("#ReviewEntryForm").submit(function (e) {
         e.preventDefault()
     });
     $("#finalize-review").before($("#finalize-review").clone().attr("id", "finalize-review-override").text("Finished")).hide();
     $("#review-form-panel a[title='Download Review']").hide();
-    if ($("#next-submission").length) {
-        $("#next-submission").clone().toggleClass("inline-block btn btn-primary pull-right").css("font-size", "15px").insertBefore("#save-draft-review").children("span").attr("style", "font-size:15px!important")
-    }
-    if ($("#prev-submission").length) {
-        $("#prev-submission").clone().toggleClass("inline-block btn btn-primary pull-right").css("font-size", "15px").insertBefore("#save-draft-review").children("span").attr("style", "font-size:15px!important")
-    }
+    // if ($("#next-submission").length) {
+    //     $("#next-submission").clone().toggleClass("inline-block btn btn-primary pull-right").css("font-size", "15px").insertBefore("#save-draft-review").children("span").attr("style", "font-size:15px!important")
+    // }
+    // if ($("#prev-submission").length) {
+    //     $("#prev-submission").clone().toggleClass("inline-block btn btn-primary pull-right").css("font-size", "15px").insertBefore("#save-draft-review").children("span").attr("style", "font-size:15px!important")
+    // }
     if ($("div[data-label-id='5257453']").length) {
         $("#ReviewEntryForm label:contains(Submitter Notes)").append('<span>Optional</span>');
     } else {
