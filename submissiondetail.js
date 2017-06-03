@@ -22,7 +22,7 @@ function enhanceReviewPanel() {
     //     $("#prev-submission").clone().toggleClass("inline-block btn btn-primary pull-right").css("font-size", "15px").insertBefore("#save-draft-review").children("span").attr("style", "font-size:15px!important")
     // }
     if ($("div.label-content:contains(No Feedback)").length) {
-        $("#ReviewEntryForm label:contains(Submitter Notes)").append('<span>Optional</span>');
+        $("#ReviewEntryForm label:contains(Submitter Notes)").append('<span> (Optional)</span>');
     } else {
         $("#ReviewEntryForm label:contains(Submitter Notes)").append('<span class="required" aria-required="true">*</span>').nextAll("textarea").addClass("required").attr("aria-required", "true");
     }
