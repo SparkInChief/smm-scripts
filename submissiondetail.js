@@ -1,9 +1,9 @@
 $(document).ready(function () {
-    enhanceReviewPanel();
+    $("#review-form-panel").load(enhanceReviewPanel);
 });
 
 function enhanceReviewPanel() {
-    $("#review-form-panel").off('DOMSubtreeModified');
+    if (!$("#ReviewEntryForm").length) return;
     $("#ReviewEntryForm").submit(function (e) {
         e.preventDefault()
     });
@@ -64,8 +64,5 @@ function enhanceReviewPanel() {
                 dataType: "json"
             })
         })
-    });
-    $("#review-form-panel").on('DOMSubtreeModified', function () {
-        enhanceReviewPanel()
     });
 }
