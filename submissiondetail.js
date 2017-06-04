@@ -33,7 +33,7 @@ function enhanceReviewPanel() {
             $(".input-validation-error").first().focus();
             return
         }
-        var submitterNotes = $("#ReviewEntryForm label:contains(Submitter Notes)").nextAll("textarea").val();
+        var submitterNotes = $("#ReviewEntryForm label:contains(Submitter Feedback)").nextAll("textarea").val();
         if (submitterNotes) {
             $("#NoteText").val("[Submitter] " + submitterNotes);
             $("input[type=hidden]#Visibility").val("Entire Team");
